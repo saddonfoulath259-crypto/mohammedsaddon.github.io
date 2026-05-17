@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohammed Saddon Foulath — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-pale: #F7EDD0;
+    --dark: #0A0F1E;
+    --dark2: #111827;
+    --dark3: #1a2332;
+    --slate: #2D3E52;
+    --muted: #6B7A8D;
+    --cream: #FAFAF7;
+    --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--dark); color: var(--white); line-height: 1.6; }
+  a { color: inherit; text-decoration: none; }
+
+  .hero {
+    background: var(--dark);
+    padding: 80px 40px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+  }
+  .hero-glow {
+    position: absolute;
+    top: -100px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 400px;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .avatar {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 28px;
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 900;
+    color: var(--dark);
+    border: 3px solid var(--gold);
+    box-shadow: 0 0 0 6px rgba(201,168,76,0.1), 0 20px 50px rgba(0,0,0,0.5);
+  }
+
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 900; color: var(--white); margin-bottom: 4px; line-height: 1.1; }
+  .hero h1 span { color: var(--gold); font-weight: 400; }
+  .hero-title { font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin: 12px 0 24px; opacity: 0.85; }
+  .hero-bio { max-width: 600px; margin: 0 auto 32px; font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.8; }
+
+  .hero-contacts { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 24px; margin-bottom: 36px; }
+  .contact-pill { display: flex; align-items: center; gap: 7px; background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2); padding: 7px 16px; border-radius: 30px; font-size: 13px; color: rgba(255,255,255,0.7); }
+
+  .stats-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; max-width: 700px; margin: 0 auto; }
+  .stat { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); border-radius: 12px; padding: 16px 24px; text-align: center; min-width: 130px; }
+  .stat-n { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; color: var(--gold); line-height: 1; display: block; }
+  .stat-l { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 4px; }
+
+  .section { padding: 64px 40px; max-width: 1100px; margin: 0 auto; }
+  .sec-header { text-align: center; margin-bottom: 48px; }
+  .sec-label { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .sec-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--white); }
+  .sec-line { width: 50px; height: 2px; background: var(--gold); margin: 14px auto 0; border-radius: 2px; }
+
+  .divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent); margin: 0 40px; }
+
+  .featured { background: var(--dark2); }
+  .featured-inner { padding: 64px 40px; max-width: 1100px; margin: 0 auto; }
+
+  .film-card { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; background: var(--dark3); border: 1px solid rgba(201,168,76,0.15); border-radius: 16px; overflow: hidden; }
+  .film-thumb { position: relative; padding-top: 56.25%; background: #000; }
+  .film-thumb iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+  .film-info { padding: 32px 32px 32px 0; }
+  .film-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); padding: 4px 12px; border-radius: 20px; margin-bottom: 14px; }
+  .film-title { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--white); margin-bottom: 12px; line-height: 1.3; }
+  .film-desc { font-size: 13.5px; color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 20px; }
+  .film-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .ftag { font-size: 11px; color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 20px; }
+
+  .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+  .video-card { background: var(--dark2); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; transition: transform 0.2s, border-color 0.2s; }
+  .video-card:hover { transform: translateY(-4px); border-color: rgba(201,168,76,0.3); }
+  .video-thumb { position: relative; padding-top: 56.25%; background: #000; }
+  .video-thumb iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+  .video-info { padding: 16px 18px 18px; }
+  .video-badge { display: inline-block; font-size: 9.5px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  .video-title { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 6px; line-height: 1.4; }
+  .video-sub { font-size: 12px; color: rgba(255,255,255,0.45); }
+
+  .series-block { margin-bottom: 48px; }
+  .series-block:last-child { margin-bottom: 0; }
+  .series-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  .series-num { width: 40px; height: 40px; background: var(--gold); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 900; color: var(--dark); flex-shrink: 0; }
+  .series-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--white); }
+  .series-meta { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+  .series-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+
+  .skills-bg { background: var(--dark2); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+  .skill-card { background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.15); border-radius: 10px; padding: 18px 16px; text-align: center; }
+  .skill-icon { font-size: 24px; margin-bottom: 8px; }
+  .skill-name { font-size: 13px; font-weight: 600; color: var(--white); }
+  .skill-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 3px; }
+
+  .footer { background: var(--dark); border-top: 1px solid rgba(201,168,76,0.15); padding: 36px 40px; text-align: center; }
+  .footer-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+  .footer-name span { color: var(--gold); }
+  .footer-sub { font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 1px; }
+
+  @media (max-width: 768px) {
+    .hero { padding: 60px 20px 40px; }
+    .hero h1 { font-size: 32px; }
+    .section { padding: 48px 20px; }
+    .featured-inner { padding: 48px 20px; }
+    .film-card { grid-template-columns: 1fr; }
+    .film-info { padding: 24px; }
+    .divider { margin: 0 20px; }
+    .footer { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="avatar">MS</div>
+  <h1>Mohammed Saddon <span>Foulath</span></h1>
+  <div class="hero-title">Digital Media Producer & Content Manager</div>
+  <p class="hero-bio">Producing documentaries, managing 150K+ followers across 4 platforms, and creating content that spans political analysis, social issues, philosophy, and sci-fi filmmaking — all from a single mobile device in Baghdad.</p>
+  <div class="hero-contacts">
+    <div class="contact-pill">📍 Baghdad, Iraq</div>
+    <div class="contact-pill">📞 +964 780 060 2290</div>
+    <div class="contact-pill">✉ saddonfoulath259@gmail.com</div>
+  </div>
+  <div class="stats-row">
+    <div class="stat"><span class="stat-n">150K+</span><div class="stat-l">TikTok Followers</div></div>
+    <div class="stat"><span class="stat-n">35K</span><div class="stat-l">Facebook Followers</div></div>
+    <div class="stat"><span class="stat-n">2,500+</span><div class="stat-l">Videos Produced</div></div>
+    <div class="stat"><span class="stat-n">12</span><div class="stat-l">Documentary Parts</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<div class="featured">
+  <div class="featured-inner">
+    <div class="sec-header">
+      <div class="sec-label">Featured Work</div>
+      <div class="sec-title">Short Film</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="film-card">
+      <div class="film-thumb">
+        <iframe src="https://www.youtube.com/embed/YZer2sOWOGg" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="film-info">
+        <div class="film-badge">🎬 Short Film · Official Screen Credit</div>
+        <div class="film-title">حارس الحدود<br><span style="font-size:18px;color:rgba(255,255,255,0.5)">The Border Guard</span></div>
+        <p class="film-desc">A short film produced and directed by Mohammed Saddon Foulath, featuring an official screen credit. Created using AI-assisted tools and mobile production workflow.</p>
+        <div class="film-tags">
+          <span class="ftag">Directed</span>
+          <span class="ftag">Produced</span>
+          <span class="ftag">AI-Assisted</span>
+          <span class="ftag">Arabic</span>
+          <span class="ftag">Screen Credit</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<section class="section">
+  <div class="sec-header">
+    <div class="sec-label">Documentary Series</div>
+    <div class="sec-title">Sci-Fi Documentaries</div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="series-block">
+    <div class="series-header">
+      <div class="series-num">01</div>
+      <div>
+        <div class="series-name">رحلة 30 — كوكب كالترون</div>
+        <div class="series-meta">Sci-Fi Documentary · 3 Parts · Arabic & English</div>
+      </div>
+    </div>
+    <div class="series-grid">
+      <div class="video-card">
+        <div class="video-thumb"><iframe src="https://www.youtube.com/embed/EmyCG5YtBUI" allowfullscreen loading="lazy"></iframe></div>
+        <div class="video-info"><div class="video-badge">Part 01 · Arabic</div><div class="video-title">الجزء الأول — عربي</div></div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb"><iframe src="https://www.youtube.com/embed/U2QWPAG-pKs" allowfullscreen loading="lazy"></iframe></div>
+        <div class="video-info"><div class="video-badge">Part 01 · English</div><div class="video-title">Part One — English</div></div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb"><iframe src="https://www.youtube.com/embed/M89LpkciRjQ" allowfullscreen loading="lazy"></iframe></div>
+        <div class="video-info"><div class="video-badge">Part 02 · Arabic</div><div class="video-title">الجزء الثاني — عربي</div></div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb"><iframe src="https://www.youtube.com/embed/iHg8iMyTPmE" allowfullscreen loading="lazy"></iframe></div>
+        <div class="video-info"><div class="video-badge">Part 02 · English</div><div class="video-title">Part Two — English</div></div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb"><iframe src="https://www.youtube.com/embed/jx8aFmfrexk" allowfullscreen loading="lazy"></iframe></div>
+        <div class="video-info"><div class="video-badge">Part 03 · Arabic</div><div class="video-title">الجزء الثالث — عربي</div></div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb"><iframe src="https://www.youtube.com/embed/TfAFCYDPMdo" allowfullscreen loading="lazy"></iframe></div>
+        <div class="video-info"><div class="video-badge">Part 03 · English</div><div class="video-title">Part Three — English</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="series-block">
+    <div class="series-header">
+      <div class="series-num">02</div>
+      <div>
+        <div class="series-name">الغواصة X</div>
+        <div class="series-meta">Sci-Fi Documentary · Arabic & English</div>
+      </div>
+    </div>
+    <div class="series-grid">
+      <div class="video-card">
+        <div class="video-thumb"><iframe src="https://www.youtube.com/embed/m8Sgt-hab78" allowfullscreen loading="lazy"></iframe></div>
+        <div class="video-info"><div class="video-badge">Arabic Version</div><div class="video-title">الغواصة X — عربي</div></div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb"><iframe src="https://www.youtube.com/embed/bGExWHpJ-b4" allowfullscreen loading="lazy"></iframe></div>
+        <div class="video-info"><div class="video-badge">English Version</div><div class="video-title">Submarine X — English</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<div class="skills-bg">
+  <section class="section">
+    <div class="sec-header">
+      <div class="sec-label">Toolkit</div>
+      <div class="sec-title">Skills & Tools</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card"><div class="skill-icon">🎬</div><div class="skill-name">Video Production</div><div class="skill-sub">Direction & Production</div></div>
+      <div class="skill-card"><div class="skill-icon">✂️</div><div class="skill-name">CapCut</div><div class="skill-sub">Video Editing</div></div>
+      <div class="skill-card"><div class="skill-icon">🤖</div><div class="skill-name">AI Tools</div><div class="skill-sub">ElevenLabs · Image Gen</div></div>
+      <div class="skill-card"><div class="skill-icon">🎨</div><div class="skill-name">PicsArt</div><div class="skill-sub">Visual Design</div></div>
+      <div class="skill-card"><div class="skill-icon">🎞️</div><div class="skill-name">Chroma Key</div><div class="skill-sub">Post-Production</div></div>
+      <div class="skill-card"><div class="skill-icon">📱</div><div class="skill-name">Mobile-First</div><div class="skill-sub">Full workflow on phone</div></div>
+      <div class="skill-card"><div class="skill-icon">📊</div><div class="skill-name">Analytics</div><div class="skill-sub">Platform Strategy</div></div>
+      <div class="skill-card"><div class="skill-icon">👥</div><div class="skill-name">Team Leadership</div><div class="skill-sub">Multi-platform teams</div></div>
+    </div>
+  </section>
+</div>
+
+<footer class="footer">
+  <div class="footer-name">Mohammed Saddon <span>Foulath</span></div>
+  <div class="footer-sub">Digital Media Producer · Baghdad, Iraq · 2026</div>
+</footer>
+
+</body>
+</html>
